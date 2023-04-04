@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="getUser"
+            type="com.weather.demo.model.UserData" />
+
+        <variable
+            name="getWeather"
+            type="com.weather.demo.model.WeatherData" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.DashBoardActivity">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/header"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_15sdp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ivProfile"
+                    setImage='@{getUser.photoUri ?? ""}'
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:src="@drawable/ic_user_profile"
+                    app:civ_border_color="@color/grey"
+                    app:civ_border_width="@dimen/_1sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtUserNameHolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:fontFamily="@font/medium"
+                    android:text="@string/username"
+                    android:textColor="@color/backgroundColour"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintTop_toBottomOf="@+id/ivProfile" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:alpha="0.6"
+                    android:fontFamily="@font/medium"
+                    android:text="@{getUser.userName}"
+                    android:textColor="@color/backgroundColour"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintTop_toBottomOf="@+id/txtUserNameHolder" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtDesHolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/medium"
+                    android:text="@string/description"
+                    android:textColor="@color/backgroundColour"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:alpha="0.6"
+                    android:fontFamily="@font/medium"
+                    android:text="@{getUser.description}"
+                    android:textColor="@color/backgroundColour"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDesHolder" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCityHolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/medium"
+                    android:text="@string/select_city"
+                    android:textColor="@color/backgroundColour"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilCity"
+                    style="@style/textInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:focusable="false"
+                    android:gravity="center"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCityHolder">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtCity"
+                        style="@style/edittext"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:cursorVisible="false"
+                        android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                        android:focusable="false"
+                        android:hint="@string/select"
+                        android:onClick="@{clickListener}"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:textColorHint="@color/backgroundColour" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtWeatherHolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/medium"
+                    android:text="@string/weather"
+                    android:textColor="@color/backgroundColour"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintTop_toBottomOf="@+id/tilCity" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtWeather"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:alpha="0.6"
+                    android:fontFamily="@font/medium"
+                    android:text="@{getWeather.temperature}"
+                    android:textColor="@color/backgroundColour"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintTop_toBottomOf="@+id/txtWeatherHolder" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtWindHolder"
+                    setWind='@{getWeather.wind ?? ""}'
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:alpha="0.6"
+                    android:visibility="gone"
+                    android:fontFamily="@font/medium"
+                    android:textColor="@color/backgroundColour"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtHumidityHolder" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtHumidityHolder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:alpha="0.6"
+                    android:fontFamily="@font/medium"
+                    android:text="@{getWeather.shortPhrase}"
+                    android:textColor="@color/backgroundColour"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtWeather" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="sign_in">Sign In</string>
+    <string name="login_yourself_here_to_continue">Login yourself here to continue..</string>
+    <string name="welcome">Welcome</string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="don_t_have_an_account_create_one"><font fgcolor='#C28E8E93'>Don’t have an account? </font>Create One</string>
+    <string name="username">UserName</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="description">Short bio</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_have_an_account_sign_in"><font fgcolor='#C28E8E93'>Already have an account? </font>Sign in</string>
+    <string name="register">Register successfully.</string>
+    <string name="sign_up_failed">Register Failed</string>
+    <string name="error_email">Please enter email</string>
+    <string name="error_password">Please enter password</string>
+    <string name="error_validemail">Please enter valid email</string>
+    <string name="error_username">Please enter username</string>
+    <string name="error_valid_pass">Please enter a valid password - like Abc@1234</string>
+    <string name="error_validnewcpassword">Password &amp; confirm password does not match</string>
+    <string name="error_confirm_password">Please enter confirm password</string>
+    <string name="error_description">Please enter short bio</string>
+    <string name="my_profile">My Profile</string>
+    <string name="select">Select</string>
+    <string name="kolkata">Kolkata</string>
+    <string name="select_city">Select City</string>
+    <string name="sign_out">Logout</string>
+    <string name="weather">Weather</string>
+    <string name="settings">Settings</string>
+    <string name="not_now">Not now</string>
+    <string name="choose">Choose</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="okay">Okay</string>
+    <string name="cancel">Cancel</string>
+    <string name="app_needs_permission_to_continue">app needs permission to continue</string>
+    <string name="permission_msg_gallery">App needs permission to access gallery.</string>
+    <string name="permission_msg_camera">App needs permission to access camera</string>
+    <string name="permission_msg_location">App needs permission to access location</string>
+    <string name="select_profile">Select user profile.</string>
+    <string name="wind">Wind:</string>
+    <string name="humidity">Humidity:</string>
+
+</resources>
